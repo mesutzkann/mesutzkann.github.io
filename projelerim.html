@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projelerim</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="hakkimda.html">Hakkimda</a></li>
+            <li><a href="projelerim.html">Projelerim</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
+
+
+    <h1>Projelerim</h1>
+
+    <div class="filter-options">
+        <button onclick="filterProjects('latest')">En Son Projeler</button>
+        <button onclick="filterProjects('popular')">En Beğenilen Projeler</button>
+    </div>
+    <div class="projects" id="project-list">
+        <div class="project-container project-left" data-type="latest">
+            <h2>Akıllı Geri Dönüşüm Projesi</h2>
+            <img src="./img/Ekran görüntüsü 2024-11-14 234557.png" class="project-image">
+            <p>Günümüzde artan hammadde ihtiyacı ve çevre kirliliği kabul gören sorunlardan biridir. Projemizde bu
+                sorunları
+                azaltabilmek için geri dönüşüm sistemlerini yapay zekâ ve nesne algılama sistemleri yardımıyla
+                iyileştirmeyi
+                amaçlıyoruz.
+                Probleme yönelik çözüm önerisi iki aşamadan oluşmaktadır. İlk olarak geri dönüşüm kutularına nesne
+                tanıma
+                ve nesne ayrıştırma sistemleri entegre edilecektir. Bu sistemlerin amacı 4 farklı materyali tek bir
+                kutuda
+                toplayarak kullanımını kolaylaştırmak ve sürekli kullanımını artırmaktır.
+                Geri dönüşümü insanların hayatlarının bir parçası haline getirerek hem çevreye hem de ekonomiye katkı
+                sağlamaları amacıyla ikinci aşamayı geliştirdik. Yapacağımız mobil uygulamadaki bilgilendirici ve akıllı
+                çöp
+                kutularına bağlı bir oyun sayesinde insanların bu kutuları kullanımını arttırma ve devamlılığını
+                sağlayacağız..</p>
+        </div>
+
+        <div class="project-container project-right" data-type="popular">
+            <h2>Engelli Yaşam Sistemi</h2>
+            <img src="./img/WhatsApp Image 2024-11-14 at 23.43.07.jpeg" class="project-image">
+            <p>Bu proje, işitme engelli bireylerin işaret diliyle ifade ettikleri mesajları kamera aracılığıyla tanıyan
+                ve bu mesajları
+                önce yazılı metne, ardından sesli komut olarak ifade eden yenilikçi bir mobil uygulama platformudur. Bu
+                sayede işitme
+                engelli ve görme engelli bireyler arasında etkili bir iletişim köprüsü kurularak, iletişimde onlara
+                destek olunması
+                amaçlanır. Sistem, işaret dilini gerçek zamanlı olarak tanıyarak anında sesli geri bildirim sağlar.
+                Amacımız, akıllı
+                telefon kullanımını engelli bireylerin hayatını kolaylaştıracak şekilde yönlendirerek, topluma en basit
+                yollarla
+                katılımlarını sağlamaktır.
+
+            </p>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

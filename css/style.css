@@ -1,0 +1,258 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.center-image {
+    width: 300px;
+    height: auto;
+}
+
+nav {
+    background-color: #9009b9;
+    padding: 10px;
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(252, 251, 252);
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+
+.welcome-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#clock {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#name {
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+.welcome-section h1 {
+    font-size: 4em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#welcome-section #clock {
+    font-size: 1.5em;
+    color: #555;
+}
+
+#welcome-section #name {
+    font-size: 25px;
+    color: #333;
+    margin-top: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+.text-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    position: relative;
+
+}
+
+.contact-section {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.contact-section h2 {
+    margin-bottom: 40px;
+}
+
+.contact-section p {
+    margin-bottom: -200px;
+}
+
+.contact-section form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    line-height: 1.5;
+}
+
+
+main {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.about-section {
+    border: none;
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+
+}
+
+.personal-info p {
+    margin: 5px 0;
+}
+
+.biography {
+    margin-top: 15px;
+}
+
+.long-bio {
+    display: none;
+
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.cv {
+    color: #0000ff;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: -780px;
+}
+
+.cv:hover {
+    text-decoration: underline;
+}
+
+.personal-info {
+    float: left;
+    margin-right: 20px;
+}
+
+.personal-info img {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.biography {
+    overflow: hidden;
+}
+
+.projects {
+    display: flex;
+    padding: 20px;
+}
+
+.project-container {
+    width: 45%;
+    padding: 10px;
+}
+
+.project-image {
+    width: 35%;
+    height: auto;
+    margin-bottom: 10px;
+    margin-left: 250px;
+}
+
+.project-left {
+    align-self: flex-start;
+}
+
+.project-right {
+    align-self: flex-end;
+}
+
+.project-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.project-container p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.filter-options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-options button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
