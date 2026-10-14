@@ -1,36 +1,547 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesut Özkan</title>
+    <title>Mesut Özkan — Bilgisayar Mühendisi</title>
+    <meta name="description"
+        content="Mesut Özkan — Bilgisayar Mühendisi. Backend geliştirme, mikroservis mimarileri ve yapay zekâ (RAG, NLP) üzerine çalışıyorum.">
+    <meta name="theme-color" content="#06070d">
+    <meta property="og:title" content="Mesut Özkan — Bilgisayar Mühendisi">
+    <meta property="og:description" content="Backend · Mikroservis · Yapay Zekâ (RAG / NLP)">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./img/profil.jpeg">
+    <link rel="icon" href="./img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-
 </head>
 
-<body>
-    <header>
-        <div class="image-container">
-            <img src="./img/WhatsApp Image 2024-11-11 at 23.21.14.jpeg" class="center-image">
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="hakkimda.html">Hakkimda</a></li>
-            <li><a href="projelerim.html">Projelerim</a></li>
-            <li><a href="iletisim.html">İletişim</a></li>
-        </ul>
-    </nav>
+<body id="top">
 
-    <div class="welcome-section">
-        <h1>Sayfama Hoş Geldiniz!</h1>
-        <p id="clock">Saat: --:--:--</p>
-        <p id="name"> Mesut Özkan</p>
+    <!-- Okuma ilerleme çubuğu -->
+    <div class="scroll-progress"><span id="progressBar"></span></div>
 
+    <!-- Fareyi takip eden ışık (yalnızca masaüstü) -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- Arka plan katmanları: aurora + ızgara + grain -->
+    <div class="bg-layers" aria-hidden="true">
+        <span class="aurora aurora-1"></span>
+        <span class="aurora aurora-2"></span>
+        <span class="aurora aurora-3"></span>
+        <span class="bg-grid"></span>
+        <span class="bg-noise"></span>
     </div>
 
+    <header class="site-nav" id="siteNav">
+        <a class="brand" href="#top">
+            <span class="brand-dot"></span>mesut<span class="brand-accent">.dev</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks" aria-label="Ana menü">
+            <a href="#hakkimda" data-i18n="nav.about">Hakkımda</a>
+            <a href="#deneyim" data-i18n="nav.exp">Deneyim</a>
+            <a href="#projeler" data-i18n="nav.projects">Projeler</a>
+            <a href="#yetenekler" data-i18n="nav.skills">Yetenekler</a>
+            <a href="#iletisim" data-i18n="nav.contact">İletişim</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="lang-switch" id="langSwitch" type="button" aria-label="Language / Dil">
+                <i class="lang-thumb"></i>
+                <span class="is-active">TR</span><span>EN</span>
+            </button>
+            <a class="btn btn-ghost btn-sm cv-btn" href="./Mesut-Ozkan-CV.pdf" download>
+                <svg viewBox="0 0 24 24" class="ico">
+                    <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                </svg>
+                <span data-i18n="nav.cv">CV</span>
+            </a>
+            <button class="burger" id="burger" type="button" aria-label="Menü" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ================= HERO ================= -->
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow reveal">
+                    <span class="pulse-dot"></span>
+                    <span data-i18n="hero.eyebrow">Backend &amp; AI Engineer</span>
+                </p>
+
+                <h1 class="hero-title reveal" data-delay="1">
+                    <span class="hero-hi" data-i18n="hero.hi">Merhaba, ben</span>
+                    <span class="gradient-text">Mesut Özkan</span>
+                </h1>
+
+                <p class="hero-typed reveal" data-delay="2">
+                    <span class="mono-prefix">&gt;</span>
+                    <span id="typed"></span><span class="caret"></span>
+                </p>
+
+                <p class="hero-lead reveal" data-delay="3" data-i18n="hero.lead">
+                    Kurumsal ölçekte mikroservis mimarileri, event-driven sistemler ve yapay zekâ destekli çözümler
+                    geliştiriyorum. Temiz, test edilebilir ve sürdürülebilir kod yazmayı önemsiyorum.
+                </p>
+
+                <div class="hero-cta reveal" data-delay="4">
+                    <a class="btn btn-primary magnetic" href="#projeler">
+                        <span data-i18n="hero.ctaProjects">Projelerimi Gör</span>
+                        <svg viewBox="0 0 24 24" class="ico">
+                            <path d="M5 12h14m0 0-6-6m6 6-6 6" />
+                        </svg>
+                    </a>
+                    <a class="btn btn-outline magnetic" href="#iletisim" data-i18n="hero.ctaContact">İletişime Geç</a>
+                </div>
+
+                <ul class="hero-stats reveal" data-delay="5">
+                    <li>
+                        <strong class="count" data-count="13" data-suffix=".">13.</strong>
+                        <span data-i18n="stat.teknofest">TEKNOFEST 2024 · 70.000 takım</span>
+                    </li>
+                    <li>
+                        <strong class="count" data-count="2">2</strong>
+                        <span data-i18n="stat.intern">Kurumsal staj deneyimi</span>
+                    </li>
+                    <li>
+                        <strong class="count" data-count="10" data-suffix="+">10+</strong>
+                        <span data-i18n="stat.modules">Geliştirilen modül &amp; servis</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="hero-visual reveal" data-delay="3">
+                <div class="portrait-frame tilt">
+                    <span class="portrait-ring"></span>
+                    <img src="./img/profil.jpeg" alt="Mesut Özkan" class="portrait">
+                    <span class="float-badge badge-1">.NET 8</span>
+                    <span class="float-badge badge-2">RAG · MCP</span>
+                    <span class="float-badge badge-3">RabbitMQ</span>
+                    <span class="float-badge badge-4">React.js</span>
+                </div>
+            </div>
+
+            <a class="scroll-hint" href="#hakkimda">
+                <span class="mouse"><i></i></span>
+                <span data-i18n="hero.scroll">Kaydır</span>
+            </a>
+        </section>
+
+        <!-- ================= TEKNOLOJİ ŞERİDİ ================= -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>.NET 8</span><span>C#</span><span>React.js</span><span>Python</span><span>RabbitMQ</span>
+                <span>PostgreSQL</span><span>Docker</span><span>Kubernetes</span><span>RAG</span><span>FAISS</span>
+                <span>MCP</span><span>ElasticSearch</span><span>Node.js</span><span>JWT</span><span>OAuth 2.0</span>
+                <span>Microservices</span>
+                <span>.NET 8</span><span>C#</span><span>React.js</span><span>Python</span><span>RabbitMQ</span>
+                <span>PostgreSQL</span><span>Docker</span><span>Kubernetes</span><span>RAG</span><span>FAISS</span>
+                <span>MCP</span><span>ElasticSearch</span><span>Node.js</span><span>JWT</span><span>OAuth 2.0</span>
+                <span>Microservices</span>
+            </div>
+        </div>
+
+        <!-- ================= HAKKIMDA ================= -->
+        <section id="hakkimda" class="section">
+            <header class="section-head reveal">
+                <span class="section-kicker" data-i18n="about.kicker">01 — Hakkımda</span>
+                <h2 class="section-title" data-i18n="about.title">Problemi anlayan mühendis</h2>
+            </header>
+
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p data-i18n="about.p1">
+                        Recep Tayyip Erdoğan Üniversitesi Bilgisayar Mühendisliği bölümünden mezun oldum. Backend
+                        geliştirme ve yapay zekâ alanlarına güçlü bir ilgi duyuyorum. Bankacılık sektöründeki staj
+                        deneyimimde kurumsal ölçekte mikroservis mimarileri, event-driven sistemler ve yapay zekâ
+                        destekli çözümler üzerinde çalışma fırsatı buldum.
+                    </p>
+                    <p data-i18n="about.p2">
+                        Bunun yanı sıra görüntü işleme, nesne tespiti ve doğal dil işleme gibi yapay zekâ alanlarında da
+                        uygulamalı deneyimlerim oldu. Karmaşık problemleri çözmeyi, temiz ve sürdürülebilir kod yazmayı
+                        ve bir bilgisayar mühendisi olarak sürekli gelişmeyi önemsiyorum.
+                    </p>
+                </div>
+
+                <ul class="about-cards">
+                    <li class="glass-card spotlight reveal" data-delay="1">
+                        <svg viewBox="0 0 24 24" class="card-ico">
+                            <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+                            <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" />
+                        </svg>
+                        <h3 data-i18n="about.eduTitle">Eğitim</h3>
+                        <p data-i18n-html="about.eduBody">Recep Tayyip Erdoğan Üniversitesi<br>Lisans — Bilgisayar
+                            Mühendisliği<br><em>2021 — 2026</em></p>
+                    </li>
+                    <li class="glass-card spotlight reveal" data-delay="2">
+                        <svg viewBox="0 0 24 24" class="card-ico">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M3 12h18M12 3c2.5 2.7 2.5 15 0 18M12 3c-2.5 2.7-2.5 15 0 18" />
+                        </svg>
+                        <h3 data-i18n="about.langTitle">Diller</h3>
+                        <p data-i18n-html="about.langBody">Türkçe — Ana dil<br>İngilizce — B2</p>
+                    </li>
+                    <li class="glass-card spotlight reveal" data-delay="3">
+                        <svg viewBox="0 0 24 24" class="card-ico">
+                            <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" />
+                            <circle cx="12" cy="10" r="2.5" />
+                        </svg>
+                        <h3 data-i18n="about.locTitle">Konum</h3>
+                        <p data-i18n-html="about.locBody">İstanbul, Türkiye<br>Ofis / hibrit çalışmaya açık</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ================= DENEYİM ================= -->
+        <section id="deneyim" class="section">
+            <header class="section-head reveal">
+                <span class="section-kicker" data-i18n="exp.kicker">02 — Deneyim</span>
+                <h2 class="section-title" data-i18n="exp.title">İş Deneyimi</h2>
+            </header>
+
+            <ol class="timeline">
+                <li class="timeline-item reveal">
+                    <span class="timeline-dot"></span>
+                    <article class="glass-card spotlight">
+                        <div class="tl-head">
+                            <div>
+                                <h3 data-i18n="exp.o.role">Yazılım Mühendisi Stajyeri</h3>
+                                <p class="tl-company">Odeabank — İstanbul</p>
+                            </div>
+                            <span class="chip chip-live" data-i18n="exp.o.date">Temmuz 2025 — Devam ediyor</span>
+                        </div>
+                        <ul class="tl-list">
+                            <li data-i18n-html="exp.o.b1"><b>Kadro Yönetimi Platformu:</b> İK departmanının aktif olarak
+                                kullandığı hiyerarşik ekip yapısını yöneten kurumsal platformu .NET 8 ve React.js ile
+                                full-stack geliştirdim; rol bazlı erişim kontrolü ve çoklu servis entegrasyonu
+                                sağladım.</li>
+                            <li data-i18n-html="exp.o.b2"><b>Dolandırıcılık Tespiti &amp; Kimlik Doğrulama:</b> RabbitMQ
+                                tabanlı event-driven mimariyle kimlik doğrulama servislerini geliştirdim; NFC, PIN ve SMS
+                                akışlarını servisler arası loosely-coupled iletişim sağlayacak şekilde tasarladım.</li>
+                            <li data-i18n-html="exp.o.b3"><b>Trendyol Finans Chatbot (RAG &amp; MCP):</b> Doğal dil
+                                sorguları aracılığıyla API etkileşimlerini otomatikleştiren RAG sunucusu tasarladım; MCP
+                                entegrasyonu ile dinamik endpoint seçimi ve hibrit arama stratejileri uygulayan NLP
+                                destekli middleware geliştirdim.</li>
+                            <li data-i18n-html="exp.o.b4"><b>Merkezi Loglama Altyapısı:</b> Mikroservisler arasında
+                                güvenilir ve asenkron log aktarımı sağlayan RabbitMQ tabanlı dağıtık loglama sistemi
+                                tasarlayıp uyguladım.</li>
+                            <li data-i18n-html="exp.o.b5"><b>API Gateway Modernizasyonu:</b> Mevcut API Gateway yapısını
+                                yeniden düzenleyerek JWT ve OAuth 2.0 güvenlik entegrasyonu ile performans
+                                optimizasyonları gerçekleştirdim.</li>
+                            <li data-i18n-html="exp.o.b6"><b>Timesheet &amp; Görev Tanımları:</b> Efor girişi ve kurumsal
+                                görev tanımlama modüllerinin backend ve frontend tarafında uçtan uca geliştirilmesinde
+                                aktif rol üstlendim.</li>
+                            <li data-i18n-html="exp.o.b7"><b>Kalite ve Sürdürülebilirlik:</b> Temel iş kurallarını
+                                kapsayan unit testler yazarak servis güvenilirliğini artırdım; kod tekrarını azaltmaya
+                                yönelik hedefli refaktör çalışmalarıyla kod tabanının okunabilirliğini iyileştirdim.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span>.NET 8</span><span>React.js</span><span>RabbitMQ</span><span>PostgreSQL</span>
+                            <span>JWT</span><span>OAuth 2.0</span><span>RAG</span><span>MCP</span><span>Docker</span>
+                            <span>Kubernetes</span><span>ElasticSearch</span>
+                        </div>
+                    </article>
+                </li>
+
+                <li class="timeline-item reveal" data-delay="1">
+                    <span class="timeline-dot"></span>
+                    <article class="glass-card spotlight">
+                        <div class="tl-head">
+                            <div>
+                                <h3 data-i18n="exp.t.role">Backend Geliştirici Stajyeri</h3>
+                                <p class="tl-company">Tahsilist</p>
+                            </div>
+                            <span class="chip" data-i18n="exp.t.date">2023</span>
+                        </div>
+                        <ul class="tl-list">
+                            <li data-i18n="exp.t.b1">Node.js kullanarak backend API endpoint'leri geliştirdim ve bakımını
+                                yaptım; ana ürün için veri işleme mantığı ve servis katmanı operasyonlarını yönettim.
+                            </li>
+                            <li data-i18n="exp.t.b2">Veri çekme, filtreleme ve raporlama dahil veritabanı operasyonları
+                                için SQL sorguları yazdım ve optimize ettim; ilişkili tablolar arasında veri tutarlılığını
+                                sağladım.</li>
+                            <li data-i18n="exp.t.b3">Haftalık görev dağılımıyla yapılandırılmış bir süreçte geliştirme
+                                ekibiyle koordineli çalıştım; özellikleri zamanında teslim ederek tamamlanan işleri
+                                dokümante ettim.</li>
+                        </ul>
+                        <div class="tag-row"><span>Node.js</span><span>SQL</span><span>REST API</span></div>
+                    </article>
+                </li>
+            </ol>
+        </section>
+
+        <!-- ================= PROJELER ================= -->
+        <section id="projeler" class="section">
+            <header class="section-head reveal">
+                <span class="section-kicker" data-i18n="proj.kicker">03 — Projeler</span>
+                <h2 class="section-title" data-i18n="proj.title">Seçilmiş Çalışmalar</h2>
+            </header>
+
+            <div class="filter-bar reveal">
+                <button class="filter-btn is-active" type="button" data-filter="all" data-i18n="proj.fAll">Tümü</button>
+                <button class="filter-btn" type="button" data-filter="ai" data-i18n="proj.fAi">Yapay Zekâ</button>
+                <button class="filter-btn" type="button" data-filter="backend"
+                    data-i18n="proj.fBackend">Backend</button>
+                <button class="filter-btn" type="button" data-filter="mobile" data-i18n="proj.fMobile">Mobil</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+
+                <article class="project-card glass-card spotlight tilt reveal" data-type="ai backend">
+                    <div class="project-visual visual-code">
+                        <div class="code-mini">
+                            <div class="code-bar"><i class="dot r"></i><i class="dot y"></i><i class="dot g"></i></div>
+                            <pre><code>query → embed()
+ ├─ dense  · FAISS
+ └─ sparse · keyword
+→ rerank → endpoint</code></pre>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-org">Odeabank</span>
+                        <h3 data-i18n="proj.rag.title">RAG Sistemi</h3>
+                        <p data-i18n="proj.rag.desc">API dokümantasyonuyla doğal dil etkileşimi sağlayan, kullanıcı
+                            sorgusuna göre ilgili endpoint'leri otomatik öneren bir Retrieval-Augmented Generation
+                            sunucusu tasarladım. Dense ve sparse aramayı birleştiren hibrit retrieval, optimize edilmiş
+                            döküman chunking ve yapılandırılmış yanıt döndüren sorgu orkestrasyon katmanı geliştirdim.
+                        </p>
+                        <div class="tag-row"><span>Python</span><span>FAISS</span><span>NLP</span><span>RAG</span><span>MCP</span><span>REST
+                                API</span></div>
+                    </div>
+                </article>
+
+                <article class="project-card glass-card spotlight tilt reveal" data-delay="1" data-type="backend">
+                    <div class="project-visual visual-org">
+                        <div class="org-chart">
+                            <i class="node root"></i>
+                            <i class="node n1"></i><i class="node n2"></i>
+                            <i class="node n3"></i><i class="node n4"></i><i class="node n5"></i>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-org">Odeabank</span>
+                        <h3 data-i18n="proj.kys.title">Kadro Yönetim Sistemi (KYS)</h3>
+                        <p data-i18n="proj.kys.desc">İK departmanının aktif olarak kullandığı, organizasyon yapılarını
+                            interaktif hiyerarşi arayüzüyle yöneten kurumsal platformu full-stack geliştirdim. Hiyerarşik
+                            personel verisi ve rol bazlı yetkilendirme için RESTful servisler, sezgisel gezinme sağlayan
+                            responsive bir React arayüzü ve çoklu dahili servis entegrasyonu kurguladım.</p>
+                        <div class="tag-row"><span>.NET 8</span><span>React.js</span><span>PostgreSQL</span><span>REST
+                                API</span></div>
+                    </div>
+                </article>
+
+                <article class="project-card glass-card spotlight tilt reveal" data-delay="2" data-type="ai mobile">
+                    <div class="project-visual visual-logo">
+                        <img src="./img/engelsiz-yasam.jpeg" alt="Engelsiz Yaşam Sistemi" loading="lazy">
+                        <span class="award-chip">TEKNOFEST 2024 · 13/70.000</span>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-org">TEKNOFEST 2024</span>
+                        <h3 data-i18n="proj.eys.title">Engelsiz Yaşam Sistemi</h3>
+                        <p data-i18n="proj.eys.desc">Yapay zekâ ve görüntü işleme ile işaret dili hareketlerini gerçek
+                            zamanlı tanıyıp metne çeviren ve seslendiren mobil uygulama. İşitme ve görme engelli bireyler
+                            arasında iletişim köprüsü kurar. 70.000 takım arasında Türkiye 13.'si oldu; platform mobil
+                            cihazlarda ücretsiz erişilebilir olacak şekilde tasarlandı.</p>
+                        <div class="tag-row"><span>Python</span><span>AI</span><span data-i18n="tag.vision">Görüntü
+                                İşleme</span><span data-i18n="tag.mobile">Mobil</span></div>
+                    </div>
+                </article>
+
+                <article class="project-card glass-card spotlight tilt reveal" data-delay="3" data-type="ai mobile">
+                    <div class="project-visual visual-blueprint">
+                        <img src="./img/geri-donusum.png" alt="Akıllı Geri Dönüşüm Projesi" loading="lazy">
+                        <span class="award-chip">TÜBİTAK 2209-A</span>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-org">TÜBİTAK 2209-A</span>
+                        <h3 data-i18n="proj.recycle.title">Akıllı Geri Dönüşüm Projesi</h3>
+                        <p data-i18n="proj.recycle.desc">Nesne tespiti ile dört farklı materyali tek kutuda ayrıştıran
+                            akıllı geri dönüşüm sistemi. Kullanıcıları ödül mekanizmaları ve oyunlaştırma ile düzenli
+                            geri dönüşüme teşvik eden mobil uygulamayı geliştiriyorum. TÜBİTAK 2209-A Üniversite
+                            Araştırma Destek Programı'na kabul edildi.</p>
+                        <div class="tag-row"><span>Python</span><span data-i18n="tag.detect">Nesne
+                                Tespiti</span><span>AI</span><span data-i18n="tag.mobile2">Mobil</span></div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ================= YETENEKLER ================= -->
+        <section id="yetenekler" class="section">
+            <header class="section-head reveal">
+                <span class="section-kicker" data-i18n="skills.kicker">04 — Yetenekler</span>
+                <h2 class="section-title" data-i18n="skills.title">Teknik Beceriler</h2>
+            </header>
+
+            <div class="skills-grid">
+                <div class="glass-card spotlight skill-card reveal">
+                    <h3 data-i18n="skills.c1">Programlama Dilleri</h3>
+                    <div class="tag-row"><span>C#</span><span>JavaScript</span><span>Python</span><span>Java</span><span>C++</span>
+                    </div>
+                </div>
+                <div class="glass-card spotlight skill-card reveal" data-delay="1">
+                    <h3 data-i18n="skills.c2">Backend &amp; Framework</h3>
+                    <div class="tag-row"><span>ASP.NET Core (.NET
+                            8)</span><span>Node.js</span><span>Express.js</span><span>REST API</span></div>
+                </div>
+                <div class="glass-card spotlight skill-card reveal" data-delay="2">
+                    <h3 data-i18n="skills.c3">Frontend</h3>
+                    <div class="tag-row"><span>React.js</span><span>HTML / CSS</span><span>JavaScript</span></div>
+                </div>
+                <div class="glass-card spotlight skill-card reveal" data-delay="3">
+                    <h3 data-i18n="skills.c4">AI &amp; NLP</h3>
+                    <div class="tag-row"><span>RAG</span><span>MCP</span><span>FAISS</span><span>NLP</span><span>Object
+                            Detection</span><span>Image Processing</span></div>
+                </div>
+                <div class="glass-card spotlight skill-card reveal" data-delay="4">
+                    <h3 data-i18n="skills.c5">Mesajlaşma &amp; Mimari</h3>
+                    <div class="tag-row"><span>RabbitMQ</span><span>Microservices</span><span>API
+                            Gateway</span><span>Event-Driven</span></div>
+                </div>
+                <div class="glass-card spotlight skill-card reveal" data-delay="5">
+                    <h3 data-i18n="skills.c6">Veritabanları</h3>
+                    <div class="tag-row"><span>PostgreSQL</span><span>MySQL</span><span>SQL Server</span></div>
+                </div>
+                <div class="glass-card spotlight skill-card reveal" data-delay="6">
+                    <h3 data-i18n="skills.c7">DevOps &amp; Araçlar</h3>
+                    <div class="tag-row"><span>Docker</span><span>Kubernetes</span><span>Git</span><span>GitHub</span><span>ElasticSearch</span><span>CI/CD</span>
+                    </div>
+                </div>
+                <div class="glass-card spotlight skill-card reveal" data-delay="7">
+                    <h3 data-i18n="skills.c8">Güvenlik</h3>
+                    <div class="tag-row"><span>JWT</span><span>OAuth 2.0</span><span>Secure Logging</span></div>
+                </div>
+            </div>
+
+            <div class="awards">
+                <article class="award-card glass-card spotlight reveal">
+                    <span class="award-rank">13<small>.</small></span>
+                    <div>
+                        <h3 data-i18n="award.a1t">TEKNOFEST 2024</h3>
+                        <p data-i18n="award.a1d">Engelsiz Yaşam Sistemi projesiyle 70.000 takım arasında Türkiye 13.'si.
+                        </p>
+                    </div>
+                </article>
+                <article class="award-card glass-card spotlight reveal" data-delay="1">
+                    <span class="award-rank award-rank-sm">2209<small>-A</small></span>
+                    <div>
+                        <h3 data-i18n="award.a2t">TÜBİTAK 2209-A</h3>
+                        <p data-i18n="award.a2d">Akıllı Geri Dönüşüm Projesi ulusal araştırma destek programına kabul
+                            edildi.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ================= İLETİŞİM ================= -->
+        <section id="iletisim" class="section">
+            <header class="section-head reveal">
+                <span class="section-kicker" data-i18n="contact.kicker">05 — İletişim</span>
+                <h2 class="section-title" data-i18n="contact.title">Birlikte çalışalım</h2>
+                <p class="section-lead" data-i18n="contact.lead">Yeni bir fırsat, proje ya da sadece merhaba demek için
+                    bana ulaşabilirsiniz.</p>
+            </header>
+
+            <div class="contact-grid">
+                <div class="contact-cards">
+                    <a class="contact-card glass-card spotlight reveal" href="mailto:mesutzkann@gmail.com">
+                        <svg viewBox="0 0 24 24" class="card-ico">
+                            <rect x="2" y="4" width="20" height="16" rx="3" />
+                            <path d="m3 7 9 6 9-6" />
+                        </svg>
+                        <div class="contact-text">
+                            <span data-i18n="contact.mail">E-posta</span>
+                            <strong>mesutzkann@gmail.com</strong>
+                        </div>
+                        <button class="copy-btn" type="button" data-copy="mesutzkann@gmail.com"
+                            data-i18n="contact.copy">Kopyala</button>
+                    </a>
+                    <a class="contact-card glass-card spotlight reveal" data-delay="1" href="tel:+905324977883">
+                        <svg viewBox="0 0 24 24" class="card-ico">
+                            <path
+                                d="M5 3h4l2 5-3 2a14 14 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2Z" />
+                        </svg>
+                        <div class="contact-text">
+                            <span data-i18n="contact.phone">Telefon</span>
+                            <strong>0532 497 78 83</strong>
+                        </div>
+                    </a>
+                    <a class="contact-card glass-card spotlight reveal" data-delay="2"
+                        href="https://github.com/mesutzkann" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" class="card-ico">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3-.3 6.2-1.5 6.2-6.7A5.2 5.2 0 0 0 19.9 5a4.9 4.9 0 0 0-.1-3.6s-1.2-.3-3.9 1.5a13.4 13.4 0 0 0-7 0C6.2 1.1 5 1.4 5 1.4A4.9 4.9 0 0 0 4.9 5 5.2 5.2 0 0 0 3.5 8.8c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-1 2.6V22" />
+                        </svg>
+                        <div class="contact-text">
+                            <span>GitHub</span>
+                            <strong>github.com/mesutzkann</strong>
+                        </div>
+                    </a>
+                    <a class="contact-card glass-card spotlight reveal" data-delay="3" href="./Mesut-Ozkan-CV.pdf"
+                        download>
+                        <svg viewBox="0 0 24 24" class="card-ico">
+                            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" />
+                            <path d="M14 3v5h5" />
+                        </svg>
+                        <div class="contact-text">
+                            <span data-i18n="contact.cvLabel">Özgeçmiş</span>
+                            <strong data-i18n="contact.cvValue">CV'yi PDF olarak indir</strong>
+                        </div>
+                    </a>
+                </div>
+
+                <form class="contact-form glass-card reveal" data-delay="1" id="contactForm" novalidate>
+                    <div class="field">
+                        <input type="text" id="cf-name" name="name" required placeholder=" ">
+                        <label for="cf-name" data-i18n="form.name">Ad Soyad</label>
+                    </div>
+                    <div class="field">
+                        <input type="email" id="cf-email" name="email" required placeholder=" ">
+                        <label for="cf-email" data-i18n="form.email">E-posta</label>
+                    </div>
+                    <div class="field">
+                        <input type="text" id="cf-subject" name="subject" placeholder=" ">
+                        <label for="cf-subject" data-i18n="form.subject">Konu</label>
+                    </div>
+                    <div class="field">
+                        <textarea id="cf-message" name="message" rows="5" required placeholder=" "></textarea>
+                        <label for="cf-message" data-i18n="form.message">Mesajınız</label>
+                    </div>
+                    <button class="btn btn-primary magnetic" type="submit">
+                        <span data-i18n="form.send">Mesajı Gönder</span>
+                        <svg viewBox="0 0 24 24" class="ico">
+                            <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z" />
+                        </svg>
+                    </button>
+                    <p class="form-note" data-i18n="form.note">Gönder'e bastığınızda mesaj, varsayılan e-posta
+                        uygulamanızda hazır olarak açılır.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year">2026</span> Mesut Özkan</p>
+        <p class="footer-made" data-i18n="footer.made">Tasarlandı &amp; kodlandı — İstanbul</p>
+        <a href="#top" class="to-top" aria-label="Yukarı">
+            <svg viewBox="0 0 24 24" class="ico">
+                <path d="M12 19V5m0 0-6 6m6-6 6 6" />
+            </svg>
+        </a>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="./js/script.js"></script>
 </body>
